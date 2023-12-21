@@ -1,8 +1,5 @@
-name = "podcast_cf"
+name = "podcast-feed"
 compatibility_date = "2023-01-01"
-
-# [vars]
-# MY_VARIABLE = "production_value"
 
 [[r2_buckets]]
 binding = "PRIVATE_PODCAST"
