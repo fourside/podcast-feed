@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "wrangler dev src/index.tsx",
     "deploy": "wrangler deploy --minify src/index.tsx",
-    "check": "biome ci src"
+    "check": "biome ci src",
+    "prepare": "git config --local core.hooksPath .githooks"
   },
   "keywords": [],
   "author": "",
