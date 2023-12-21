@@ -1,5 +1,5 @@
-import dayjs from "dayjs";
 import type { FC } from "hono/jsx";
+import { formatRfc822 } from "./format-rfc822";
 
 interface Props {
   objects: R2Object[];
@@ -33,7 +33,3 @@ export const Feed: FC<Props> = (props) => {
     </rss>
   );
 };
-
-function formatRfc822(date: Date): string {
-  return dayjs(date).format("ddd, DD MMM YYYY HH:mm:ss ZZ");
-}

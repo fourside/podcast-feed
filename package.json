@@ -7,19 +7,20 @@
     "dev": "wrangler dev src/index.tsx",
     "deploy": "wrangler deploy --minify src/index.tsx",
     "check": "biome ci src",
+    "test": "TZ=UTC vitest",
     "prepare": "git config --local core.hooksPath .githooks"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dayjs": "^1.11.10",
     "hono": "3.11.4"
   },
   "devDependencies": {
     "@biomejs/biome": "1.4.1",
     "@cloudflare/workers-types": "^4.20231121.0",
     "typescript": "^5.3.3",
+    "vitest": "^1.1.0",
     "wrangler": "^3.19.0"
   }
 }
