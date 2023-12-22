@@ -5,7 +5,7 @@ compatibility_date = "2023-01-01"
 TZ = "Asia/Tokyo"
 
 [define]
-import.meta.vitest = "undefined"
+import = { "meta": { "vitest": undefined }}
 
 [[r2_buckets]]
 binding = "PRIVATE_PODCAST"
