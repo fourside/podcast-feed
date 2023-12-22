@@ -2,7 +2,7 @@ name = "podcast-feed"
 compatibility_date = "2023-01-01"
 
 [vars]
-TZ=Asia/Tokyo
+TZ = "Asia/Tokyo"
 
 [define]
 import.meta.vitest = "undefined"
