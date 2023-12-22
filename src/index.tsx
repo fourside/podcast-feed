@@ -22,7 +22,11 @@ app.use("/feed/*", async (c, next) => {
 app.get("/feed", async (c) => {
   const list = await c.env.PRIVATE_PODCAST.list();
   const xml = html`<?xml version="1.0" encoding="UTF-8"?>${(
-    <Feed objects={list.objects} />
+    <Feed
+      objects={list.objects.toSorted(
+        (a, b) => b.uploaded.getTime() - a.uploaded.getTime(),
+      )}
+    />
   )}`;
   return c.html(xml, 200, { "Content-Type": "application/xml" });
 });
