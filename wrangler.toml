@@ -1,5 +1,6 @@
 name = "podcast-feed"
 compatibility_date = "2023-01-01"
+keep_vars = true
 
 [vars]
 TZ = "Asia/Tokyo"
