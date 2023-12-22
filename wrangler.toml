@@ -3,9 +3,11 @@ compatibility_date = "2023-01-01"
 
 [vars]
 TZ = "Asia/Tokyo"
+USERNAME = ""
+PASSWORD = ""
 
 [define]
-import = { "meta": { "vitest": undefined }}
+"import.meta.vitest" = "undefined"
 
 [[r2_buckets]]
 binding = "PRIVATE_PODCAST"
