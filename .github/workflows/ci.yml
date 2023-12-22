@@ -26,4 +26,4 @@ jobs:
         run: npm run check
 
       - name: Test
-        run: npm test
+        run: npm test -- --watch

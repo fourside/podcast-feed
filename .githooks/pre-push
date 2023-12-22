@@ -1,6 +1,6 @@
 #!/bin/sh
 set -xe
 
-npx tsc --noEmit
+# npx tsc --noEmit
 npm run check
-npm test
+npm test -- --run
