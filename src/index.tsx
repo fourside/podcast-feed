@@ -37,8 +37,10 @@ app.get(`${FILE_PATH}/:file`, async (c) => {
   if (file === null) {
     return c.notFound();
   }
-  const buff = await file.arrayBuffer();
-  return c.body(new Uint8Array(buff));
+  return c.stream(async (stream) => {
+    const buff = await file.arrayBuffer();
+    await stream.write(new Uint8Array(buff));
+  });
 });
 
 export default app;
