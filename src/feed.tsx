@@ -2,6 +2,7 @@ import type { FC } from "hono/jsx";
 import { formatRfc822 } from "./format-rfc822";
 
 interface Props {
+  host: string;
   objects: R2Object[];
 }
 
@@ -22,7 +23,7 @@ export const Feed: FC<Props> = (props) => {
             <title>{item.key}</title>
             <description>{item.key}</description>
             <enclosure
-              url={`/${FILE_PATH}/${encodeURI(item.key)}`}
+              url={`${props.host}/${FILE_PATH}/${encodeURI(item.key)}`}
               length={item.size}
               type={"audio/mpeg"}
             />

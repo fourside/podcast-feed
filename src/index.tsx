@@ -5,6 +5,7 @@ import { FILE_PATH, Feed } from "./feed";
 
 type Bindings = {
   PRIVATE_PODCAST: R2Bucket;
+  HOST: string;
   USERNAME: string;
   PASSWORD: string;
 };
@@ -23,6 +24,7 @@ app.get("/feed", async (c) => {
   const list = await c.env.PRIVATE_PODCAST.list();
   const xml = html`<?xml version="1.0" encoding="UTF-8"?>${(
     <Feed
+      host={c.env.HOST}
       objects={list.objects.toSorted(
         (a, b) => b.uploaded.getTime() - a.uploaded.getTime(),
       )}
