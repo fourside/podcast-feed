@@ -14,3 +14,7 @@ PASSWORD = ""
 binding = "PRIVATE_PODCAST"
 bucket_name = "private-podcast"
 
+[[d1_databases]]
+binding = "DB"
+database_name = "podcast-db"
+database_id = "1a0e1abe-7cce-4112-9b9a-9b41813e034a"
