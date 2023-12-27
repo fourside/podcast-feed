@@ -1,7 +1,8 @@
 import { Hono } from "hono";
 import { basicAuth } from "hono/basic-auth";
 import { html } from "hono/html";
-import { object, pattern, string, validate, type Describe } from "superstruct";
+import type { Describe } from "superstruct";
+import { object, pattern, string, validate } from "superstruct";
 import { FILE_PATH, Feed } from "./feed";
 
 type Bindings = {
