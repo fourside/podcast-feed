@@ -14,13 +14,15 @@ type Bindings = {
 
 const app = new Hono<{ Bindings: Bindings }>();
 
-app.use("/feed/*", async (c, next) => {
-  const auth = basicAuth({
-    username: c.env.USERNAME,
-    password: c.env.PASSWORD,
+for (const path of ["/feed/*", "/tasks/*"]) {
+  app.use(path, async (c, next) => {
+    const auth = basicAuth({
+      username: c.env.USERNAME,
+      password: c.env.PASSWORD,
+    });
+    return auth(c, next);
   });
-  return auth(c, next);
-});
+}
 
 app.get("/feed", async (c) => {
   const list = await c.env.PRIVATE_PODCAST.list();
@@ -79,7 +81,7 @@ const programSchema: Describe<ProgramModel> = object({
   personality: string(),
 });
 
-app.post("/task", async (c) => {
+app.post("/tasks", async (c) => {
   const json = await c.req.json();
   const [err, program] = validate(json, programSchema);
   if (err !== undefined) {
