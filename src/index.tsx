@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { basicAuth } from "hono/basic-auth";
 import { html } from "hono/html";
-import { object, string, validate, type Describe } from "superstruct";
+import { object, pattern, string, validate, type Describe } from "superstruct";
 import { FILE_PATH, Feed } from "./feed";
 
 type Bindings = {
@@ -76,8 +76,8 @@ app.get("/tasks", async (c) => {
 const programSchema: Describe<ProgramModel> = object({
   stationId: string(),
   title: string(),
-  fromTime: string(),
-  duration: string(),
+  fromTime: pattern(string(), /^\d{12}$/),
+  duration: pattern(string(), /^\d+$/),
   personality: string(),
 });
 
