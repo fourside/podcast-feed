@@ -68,7 +68,7 @@ app.get("/tasks", async (c) => {
   );
   const result = await statement.all<ProgramRecord>();
   if (result.success) {
-    return c.json(JSON.stringify(result.results));
+    return c.json(result.results);
   }
   console.error(result.error);
   return c.json({ message: "error" }, 500);
