@@ -1,19 +1,5 @@
-const DAYS_OF_WEEK = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as const;
-const MONTHS = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-] as const;
-
+const weekdayFormatter = new Intl.DateTimeFormat("en-US", { weekday: "short" });
+const monthFormatter = new Intl.DateTimeFormat("en-US", { month: "short" });
 const timeFormatter = new Intl.DateTimeFormat("ja-JP", {
   hour: "2-digit",
   minute: "2-digit",
@@ -22,8 +8,8 @@ const timeFormatter = new Intl.DateTimeFormat("ja-JP", {
 
 export function formatRfc822(date: Date): string {
   // Sat, 16 Dec 2023 10:30:59 +0000
-  const dayOfWeek = DAYS_OF_WEEK[date.getDay()];
-  const month = MONTHS[date.getMonth()];
+  const dayOfWeek = weekdayFormatter.format(date);
+  const month = monthFormatter.format(date);
   const time = timeFormatter.format(date);
   const timezone = calcTimezone(date.getTimezoneOffset());
   return `${dayOfWeek}, ${date.getDate()} ${month} ${date.getFullYear()} ${time} ${timezone}`;
