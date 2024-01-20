@@ -8,15 +8,13 @@
     "deploy": "wrangler deploy --minify src/index.tsx",
     "check": "biome ci src",
     "test": "TZ=UTC vitest",
-    "deploy:schema": "wrangler d1 execute podcast-db --file=./schema.sql",
     "prepare": "git config --local core.hooksPath .githooks"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "hono": "3.11.9",
-    "superstruct": "^1.0.3"
+    "hono": "3.11.9"
   },
   "devDependencies": {
     "@biomejs/biome": "1.4.1",
