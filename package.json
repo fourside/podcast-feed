@@ -20,7 +20,7 @@
     "@biomejs/biome": "1.4.1",
     "@cloudflare/workers-types": "^4.20231121.0",
     "typescript": "^5.3.3",
-    "vitest": "^1.1.0",
+    "vitest": "^1.2.1",
     "wrangler": "^3.22.1"
   }
 }
