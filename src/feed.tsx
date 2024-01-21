@@ -39,5 +39,5 @@ export const Feed: FC<Props> = (props) => {
 function artworkUrl(itemKey: string): string {
   const host = "https://private-podcast-artworks.fourside.dev";
   const basename = itemKey.replace(/-\d{8}.mp3/, "");
-  return `${host}/${basename}.jpg`;
+  return `${host}/${encodeURI(basename)}.jpg`;
 }
