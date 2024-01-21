@@ -28,9 +28,16 @@ export const Feed: FC<Props> = (props) => {
               type={"audio/mpeg"}
             />
             <pubDate>{formatRfc822(item.uploaded)}</pubDate>
+            <itunes:image href={artworkUrl(item.key)} />
           </item>
         ))}
       </channel>
     </rss>
   );
 };
+
+function artworkUrl(itemKey: string): string {
+  const host = "https://private-podcast-artworks.fourside.dev";
+  const basename = itemKey.replace(/-\d{8}.mp3/, "");
+  return `${host}/${basename}.jpg`;
+}
