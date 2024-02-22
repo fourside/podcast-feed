@@ -19,33 +19,20 @@ export const Feed: FC<Props> = (props) => {
         <title>private podcast</title>
         <pubDate>{formatRfc822(new Date())}</pubDate>
         {props.objects.map((item) => (
-          <Item host={props.host} item={item} />
+          <item key={item.key}>
+            <title>{item.key}</title>
+            <description>{item.key}</description>
+            <enclosure
+              url={`${props.host}/${FILE_PATH}/${encodeURI(item.key)}`}
+              length={item.size}
+              type={"audio/mpeg"}
+            />
+            <pubDate>{formatRfc822(item.uploaded)}</pubDate>
+            <itunes:image href={artworkUrl(item.key)} />
+          </item>
         ))}
       </channel>
     </rss>
-  );
-};
-
-interface ItemProps {
-  host: string;
-  item: R2Object;
-}
-const Item: FC<ItemProps> = (props) => {
-  const ext = props.item.key.split(".").pop();
-  const mimeType =
-    ext === "mp3" ? "audio/mpeg" : ext === "aac" ? "audio/x-aac" : "";
-  return (
-    <item key={props.item.key}>
-      <title>{props.item.key}</title>
-      <description>{props.item.key}</description>
-      <enclosure
-        url={`${props.host}/${FILE_PATH}/${encodeURI(props.item.key)}`}
-        length={props.item.size}
-        type={mimeType}
-      />
-      <pubDate>{formatRfc822(props.item.uploaded)}</pubDate>
-      <itunes:image href={artworkUrl(props.item.key)} />
-    </item>
   );
 };
 
